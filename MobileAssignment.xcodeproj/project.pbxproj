@@ -30,6 +30,15 @@
 		AB520F092A3F5BB400C9923C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F082A3F5BB400C9923C /* LoadingView.swift */; };
 		AB520F0A2A3F5BB400C9923C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F082A3F5BB400C9923C /* LoadingView.swift */; };
 		AB520F0B2A3F5BB400C9923C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F082A3F5BB400C9923C /* LoadingView.swift */; };
+		AB520F0D2A3F649B00C9923C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F0C2A3F649B00C9923C /* MainView.swift */; };
+		AB520F0E2A3F649B00C9923C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F0C2A3F649B00C9923C /* MainView.swift */; };
+		AB520F0F2A3F649B00C9923C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F0C2A3F649B00C9923C /* MainView.swift */; };
+		AB520F132A3F668500C9923C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F122A3F668500C9923C /* ProfileView.swift */; };
+		AB520F142A3F668500C9923C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F122A3F668500C9923C /* ProfileView.swift */; };
+		AB520F152A3F668500C9923C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F122A3F668500C9923C /* ProfileView.swift */; };
+		AB520F172A3F718B00C9923C /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F162A3F718B00C9923C /* EditProfileView.swift */; };
+		AB520F182A3F718B00C9923C /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F162A3F718B00C9923C /* EditProfileView.swift */; };
+		AB520F192A3F718B00C9923C /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F162A3F718B00C9923C /* EditProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +73,9 @@
 		AB520EF82A3F2DCA00C9923C /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		AB520F042A3F540800C9923C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB520F082A3F5BB400C9923C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		AB520F0C2A3F649B00C9923C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AB520F122A3F668500C9923C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AB520F162A3F718B00C9923C /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +170,7 @@
 		AB520EF72A3F2DB100C9923C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB520F112A3F665A00C9923C /* MainView */,
 				AB520EF82A3F2DCA00C9923C /* AuthView.swift */,
 				AB520F082A3F5BB400C9923C /* LoadingView.swift */,
 			);
@@ -177,6 +190,16 @@
 				AB520F042A3F540800C9923C /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AB520F112A3F665A00C9923C /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				AB520F0C2A3F649B00C9923C /* MainView.swift */,
+				AB520F122A3F668500C9923C /* ProfileView.swift */,
+				AB520F162A3F718B00C9923C /* EditProfileView.swift */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,9 +345,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB520F052A3F540800C9923C /* User.swift in Sources */,
+				AB520F0D2A3F649B00C9923C /* MainView.swift in Sources */,
+				AB520F172A3F718B00C9923C /* EditProfileView.swift in Sources */,
 				AB520EC52A3F2C7F00C9923C /* ContentView.swift in Sources */,
 				AB520EC32A3F2C7F00C9923C /* MobileAssignmentApp.swift in Sources */,
 				AB520F092A3F5BB400C9923C /* LoadingView.swift in Sources */,
+				AB520F132A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520EF92A3F2DCA00C9923C /* AuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,9 +359,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB520F182A3F718B00C9923C /* EditProfileView.swift in Sources */,
 				AB520EFA2A3F2DCA00C9923C /* AuthView.swift in Sources */,
 				AB520F0A2A3F5BB400C9923C /* LoadingView.swift in Sources */,
 				AB520ED42A3F2C8000C9923C /* MobileAssignmentTests.swift in Sources */,
+				AB520F0E2A3F649B00C9923C /* MainView.swift in Sources */,
+				AB520F142A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520F062A3F540800C9923C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,9 +374,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB520F072A3F540800C9923C /* User.swift in Sources */,
+				AB520F0F2A3F649B00C9923C /* MainView.swift in Sources */,
+				AB520F192A3F718B00C9923C /* EditProfileView.swift in Sources */,
 				AB520EDE2A3F2C8000C9923C /* MobileAssignmentUITests.swift in Sources */,
 				AB520EE02A3F2C8000C9923C /* MobileAssignmentUITestsLaunchTests.swift in Sources */,
 				AB520F0B2A3F5BB400C9923C /* LoadingView.swift in Sources */,
+				AB520F152A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520EFB2A3F2DCA00C9923C /* AuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
