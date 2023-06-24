@@ -119,7 +119,7 @@ struct CreateJobView: View {
             .padding(10)
         }
         .frame(maxHeight: .infinity,alignment: .top)
-        .photosPicker(isPresented: $showImagePicker, selection: $imageItem)
+        .photosPicker(isPresented: $showImagePicker, selection: $imageItem, matching: .images)
         .onChange(of: imageItem) {newValue in
             if let newValue {
                 Task{
@@ -152,8 +152,9 @@ struct CreateJobView: View {
             do{
                 var imagesUrl: [URL] = []
                 if !jobImagesData.isEmpty{
-                    for imageData in jobImagesData {
-                        let storageRef = Storage.storage().reference().child("Job_Images").child(user_UID)
+                    for (index, imageData) in jobImagesData.enumerated() {
+                        let referenceId = "\(user_UID)\(Date())\(index)"
+                        let storageRef = Storage.storage().reference().child("Job_Images").child(referenceId)
                         let _ = try await storageRef.putDataAsync(imageData)
                         let imageUrl = try await storageRef.downloadURL()
                         
