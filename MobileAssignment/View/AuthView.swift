@@ -31,6 +31,7 @@ struct LoginView: View {
             VStack(spacing: 10){
                 TextField("Email", text: $email)
                     .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
                     .padding(.horizontal,15)
                     .padding(.vertical,10)
                     .background{
@@ -41,6 +42,7 @@ struct LoginView: View {
                 
                 SecureField("Password", text: $password)
                     .textContentType(.password)
+                    .textInputAutocapitalization(.never)
                     .padding(.horizontal,15)
                     .padding(.vertical,10)
                     .background{
@@ -184,6 +186,7 @@ struct RegisterView: View {
             VStack(spacing: 10){
                 TextField("Username", text: $username)
                     .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
                     .padding(.horizontal,15)
                     .padding(.vertical,10)
                     .background{
@@ -194,6 +197,7 @@ struct RegisterView: View {
                 
                 TextField("Email", text: $email)
                     .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
                     .padding(.horizontal,15)
                     .padding(.vertical,10)
                     .background{
@@ -204,6 +208,7 @@ struct RegisterView: View {
                 
                 SecureField("Password", text: $password)
                     .textContentType(.password)
+                    .textInputAutocapitalization(.never)
                     .padding(.horizontal,15)
                     .padding(.vertical,10)
                     .background{

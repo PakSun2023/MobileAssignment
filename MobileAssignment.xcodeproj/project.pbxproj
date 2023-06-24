@@ -39,6 +39,19 @@
 		AB520F172A3F718B00C9923C /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F162A3F718B00C9923C /* EditProfileView.swift */; };
 		AB520F182A3F718B00C9923C /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F162A3F718B00C9923C /* EditProfileView.swift */; };
 		AB520F192A3F718B00C9923C /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB520F162A3F718B00C9923C /* EditProfileView.swift */; };
+		AB520F1B2A3F794C00C9923C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB520F1A2A3F794C00C9923C /* GoogleService-Info.plist */; };
+		AB520F1C2A3F794C00C9923C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB520F1A2A3F794C00C9923C /* GoogleService-Info.plist */; };
+		AB520F1D2A3F794C00C9923C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB520F1A2A3F794C00C9923C /* GoogleService-Info.plist */; };
+		ABD36ACE2A47464A0060325C /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ACD2A47464A0060325C /* Job.swift */; };
+		ABD36ACF2A47464A0060325C /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ACD2A47464A0060325C /* Job.swift */; };
+		ABD36AD02A47464A0060325C /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ACD2A47464A0060325C /* Job.swift */; };
+		ABD36AD22A4748780060325C /* CreateJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AD12A4748780060325C /* CreateJobView.swift */; };
+		ABD36AD32A4748780060325C /* CreateJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AD12A4748780060325C /* CreateJobView.swift */; };
+		ABD36AD42A4748780060325C /* CreateJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AD12A4748780060325C /* CreateJobView.swift */; };
+		ABD36AD62A474CEE0060325C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = ABD36AD52A474CEE0060325C /* FirebaseStorage */; };
+		ABD36AD82A4771380060325C /* JobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AD72A4771380060325C /* JobsView.swift */; };
+		ABD36AD92A4771380060325C /* JobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AD72A4771380060325C /* JobsView.swift */; };
+		ABD36ADA2A4771380060325C /* JobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AD72A4771380060325C /* JobsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +89,10 @@
 		AB520F0C2A3F649B00C9923C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AB520F122A3F668500C9923C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AB520F162A3F718B00C9923C /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		AB520F1A2A3F794C00C9923C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABD36ACD2A47464A0060325C /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		ABD36AD12A4748780060325C /* CreateJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateJobView.swift; sourceTree = "<group>"; };
+		ABD36AD72A4771380060325C /* JobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +103,7 @@
 				AB520EF22A3F2DA100C9923C /* FirebaseAuth in Frameworks */,
 				AB520EF42A3F2DA100C9923C /* FirebaseFirestore in Frameworks */,
 				AB520EFE2A3F306900C9923C /* FirebaseDatabase in Frameworks */,
+				ABD36AD62A474CEE0060325C /* FirebaseStorage in Frameworks */,
 				AB520EF62A3F2DA100C9923C /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +149,7 @@
 		AB520EC12A3F2C7F00C9923C /* MobileAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				AB520F1A2A3F794C00C9923C /* GoogleService-Info.plist */,
 				AB520EFF2A3F53C100C9923C /* Model */,
 				AB520EF72A3F2DB100C9923C /* View */,
 				AB520EEC2A3F2CE000C9923C /* GoogleService-Info.plist */,
@@ -188,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				AB520F042A3F540800C9923C /* User.swift */,
+				ABD36ACD2A47464A0060325C /* Job.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +218,8 @@
 				AB520F0C2A3F649B00C9923C /* MainView.swift */,
 				AB520F122A3F668500C9923C /* ProfileView.swift */,
 				AB520F162A3F718B00C9923C /* EditProfileView.swift */,
+				ABD36AD12A4748780060325C /* CreateJobView.swift */,
+				ABD36AD72A4771380060325C /* JobsView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -223,6 +245,7 @@
 				AB520EF32A3F2DA100C9923C /* FirebaseFirestore */,
 				AB520EF52A3F2DA100C9923C /* FirebaseFirestoreSwift */,
 				AB520EFD2A3F306900C9923C /* FirebaseDatabase */,
+				ABD36AD52A474CEE0060325C /* FirebaseStorage */,
 			);
 			productName = MobileAssignment;
 			productReference = AB520EBF2A3F2C7F00C9923C /* MobileAssignment.app */;
@@ -316,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB520ECA2A3F2C8000C9923C /* Preview Assets.xcassets in Resources */,
+				AB520F1B2A3F794C00C9923C /* GoogleService-Info.plist in Resources */,
 				AB520EC72A3F2C8000C9923C /* Assets.xcassets in Resources */,
 				AB520EED2A3F2CE000C9923C /* GoogleService-Info.plist in Resources */,
 			);
@@ -326,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB520EEE2A3F2CE000C9923C /* GoogleService-Info.plist in Resources */,
+				AB520F1C2A3F794C00C9923C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB520EEF2A3F2CE000C9923C /* GoogleService-Info.plist in Resources */,
+				AB520F1D2A3F794C00C9923C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,8 +374,11 @@
 				AB520F0D2A3F649B00C9923C /* MainView.swift in Sources */,
 				AB520F172A3F718B00C9923C /* EditProfileView.swift in Sources */,
 				AB520EC52A3F2C7F00C9923C /* ContentView.swift in Sources */,
+				ABD36ACE2A47464A0060325C /* Job.swift in Sources */,
 				AB520EC32A3F2C7F00C9923C /* MobileAssignmentApp.swift in Sources */,
+				ABD36AD22A4748780060325C /* CreateJobView.swift in Sources */,
 				AB520F092A3F5BB400C9923C /* LoadingView.swift in Sources */,
+				ABD36AD82A4771380060325C /* JobsView.swift in Sources */,
 				AB520F132A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520EF92A3F2DCA00C9923C /* AuthView.swift in Sources */,
 			);
@@ -361,11 +390,14 @@
 			files = (
 				AB520F182A3F718B00C9923C /* EditProfileView.swift in Sources */,
 				AB520EFA2A3F2DCA00C9923C /* AuthView.swift in Sources */,
+				ABD36AD32A4748780060325C /* CreateJobView.swift in Sources */,
 				AB520F0A2A3F5BB400C9923C /* LoadingView.swift in Sources */,
 				AB520ED42A3F2C8000C9923C /* MobileAssignmentTests.swift in Sources */,
 				AB520F0E2A3F649B00C9923C /* MainView.swift in Sources */,
+				ABD36AD92A4771380060325C /* JobsView.swift in Sources */,
 				AB520F142A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520F062A3F540800C9923C /* User.swift in Sources */,
+				ABD36ACF2A47464A0060325C /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,8 +409,11 @@
 				AB520F0F2A3F649B00C9923C /* MainView.swift in Sources */,
 				AB520F192A3F718B00C9923C /* EditProfileView.swift in Sources */,
 				AB520EDE2A3F2C8000C9923C /* MobileAssignmentUITests.swift in Sources */,
+				ABD36AD02A47464A0060325C /* Job.swift in Sources */,
 				AB520EE02A3F2C8000C9923C /* MobileAssignmentUITestsLaunchTests.swift in Sources */,
+				ABD36AD42A4748780060325C /* CreateJobView.swift in Sources */,
 				AB520F0B2A3F5BB400C9923C /* LoadingView.swift in Sources */,
+				ABD36ADA2A4771380060325C /* JobsView.swift in Sources */,
 				AB520F152A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520EFB2A3F2DCA00C9923C /* AuthView.swift in Sources */,
 			);
@@ -714,6 +749,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB520EF02A3F2DA100C9923C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		ABD36AD52A474CEE0060325C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB520EF02A3F2DA100C9923C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

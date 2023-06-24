@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
@@ -18,9 +19,12 @@ struct EditProfileView: View {
                 }
                 .font(.callout)
                 .foregroundColor(.black)
-                .frame(maxWidth: .infinity,alignment: .leading)
                 
-                Button(action: {}) {
+                Spacer()
+                
+                Button{
+                    dismiss()
+                } label: {
                     Text("Update")
                         .font(.callout)
                         .foregroundColor(.white)
@@ -30,6 +34,8 @@ struct EditProfileView: View {
                 }
             }
             .padding(.horizontal)
+            
+            Divider()
         }
         .frame(maxHeight: .infinity,alignment: .top)
     }

@@ -13,12 +13,14 @@ struct User: Identifiable, Codable {
     var username: String
     var userUID: String
     var userEmail: String
+    var userIcon: String?
     
     enum CodingKeys: CodingKey {
         case id
         case username
         case userUID
         case userEmail
+        case userIcon
     }
 }
 

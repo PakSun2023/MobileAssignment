@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView{
-            Text("Home")
+            JobsView()
                 .tabItem {
                     Image(systemName: "house.circle")
                     Text("Home")
