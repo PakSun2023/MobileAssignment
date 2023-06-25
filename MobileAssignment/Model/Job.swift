@@ -7,13 +7,21 @@
 
 import SwiftUI
 import FirebaseFirestoreSwift
+import Foundation
+
+enum jobStatus: String, Codable {
+    case open, progress, cancel, completed
+}
 
 struct Job: Identifiable, Codable {
     @DocumentID var id: String?
     var title: String
     var description: String
+    var createdDate: Date = Date()
+    var status: jobStatus = .open
     var imagesURL: [URL]?
     var assignTo: String?
+    var requestBy: String?
     var username: String
     var userUID: String
     
@@ -21,8 +29,11 @@ struct Job: Identifiable, Codable {
         case id
         case title
         case description
+        case createdDate
+        case status
         case imagesURL
         case assignTo
+        case requestBy
         case username
         case userUID
     }

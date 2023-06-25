@@ -55,6 +55,10 @@
 		ABD36ADC2A4812850060325C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ADB2A4812840060325C /* ImagePicker.swift */; };
 		ABD36ADD2A4812850060325C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ADB2A4812840060325C /* ImagePicker.swift */; };
 		ABD36ADE2A4812850060325C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ADB2A4812840060325C /* ImagePicker.swift */; };
+		ABD36AE02A4834DF0060325C /* JobCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ADF2A4834DF0060325C /* JobCardView.swift */; };
+		ABD36AE12A4834DF0060325C /* JobCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ADF2A4834DF0060325C /* JobCardView.swift */; };
+		ABD36AE22A4834DF0060325C /* JobCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ADF2A4834DF0060325C /* JobCardView.swift */; };
+		ABD36AE52A4835920060325C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = ABD36AE42A4835920060325C /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +101,7 @@
 		ABD36AD12A4748780060325C /* CreateJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateJobView.swift; sourceTree = "<group>"; };
 		ABD36AD72A4771380060325C /* JobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsView.swift; sourceTree = "<group>"; };
 		ABD36ADB2A4812840060325C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		ABD36ADF2A4834DF0060325C /* JobCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABD36AE52A4835920060325C /* SDWebImageSwiftUI in Frameworks */,
 				AB520EF22A3F2DA100C9923C /* FirebaseAuth in Frameworks */,
 				AB520EF42A3F2DA100C9923C /* FirebaseFirestore in Frameworks */,
 				AB520EFE2A3F306900C9923C /* FirebaseDatabase in Frameworks */,
@@ -225,6 +231,7 @@
 				AB520F162A3F718B00C9923C /* EditProfileView.swift */,
 				ABD36AD12A4748780060325C /* CreateJobView.swift */,
 				ABD36AD72A4771380060325C /* JobsView.swift */,
+				ABD36ADF2A4834DF0060325C /* JobCardView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -251,6 +258,7 @@
 				AB520EF52A3F2DA100C9923C /* FirebaseFirestoreSwift */,
 				AB520EFD2A3F306900C9923C /* FirebaseDatabase */,
 				ABD36AD52A474CEE0060325C /* FirebaseStorage */,
+				ABD36AE42A4835920060325C /* SDWebImageSwiftUI */,
 			);
 			productName = MobileAssignment;
 			productReference = AB520EBF2A3F2C7F00C9923C /* MobileAssignment.app */;
@@ -326,6 +334,7 @@
 			mainGroup = AB520EB62A3F2C7F00C9923C;
 			packageReferences = (
 				AB520EF02A3F2DA100C9923C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				ABD36AE32A4835920060325C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = AB520EC02A3F2C7F00C9923C /* Products */;
 			projectDirPath = "";
@@ -385,6 +394,7 @@
 				AB520F092A3F5BB400C9923C /* LoadingView.swift in Sources */,
 				ABD36AD82A4771380060325C /* JobsView.swift in Sources */,
 				ABD36ADC2A4812850060325C /* ImagePicker.swift in Sources */,
+				ABD36AE02A4834DF0060325C /* JobCardView.swift in Sources */,
 				AB520F132A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520EF92A3F2DCA00C9923C /* AuthView.swift in Sources */,
 			);
@@ -402,6 +412,7 @@
 				AB520F0E2A3F649B00C9923C /* MainView.swift in Sources */,
 				ABD36AD92A4771380060325C /* JobsView.swift in Sources */,
 				ABD36ADD2A4812850060325C /* ImagePicker.swift in Sources */,
+				ABD36AE12A4834DF0060325C /* JobCardView.swift in Sources */,
 				AB520F142A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520F062A3F540800C9923C /* User.swift in Sources */,
 				ABD36ACF2A47464A0060325C /* Job.swift in Sources */,
@@ -422,6 +433,7 @@
 				AB520F0B2A3F5BB400C9923C /* LoadingView.swift in Sources */,
 				ABD36ADA2A4771380060325C /* JobsView.swift in Sources */,
 				ABD36ADE2A4812850060325C /* ImagePicker.swift in Sources */,
+				ABD36AE22A4834DF0060325C /* JobCardView.swift in Sources */,
 				AB520F152A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520EFB2A3F2DCA00C9923C /* AuthView.swift in Sources */,
 			);
@@ -739,6 +751,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		ABD36AE32A4835920060325C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -766,6 +786,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB520EF02A3F2DA100C9923C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		ABD36AE42A4835920060325C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABD36AE32A4835920060325C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

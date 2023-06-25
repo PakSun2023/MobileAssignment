@@ -6,14 +6,37 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct JobsView: View {
     @State var createNewJob: Bool = false
+    @State var recentJobs: [Job] = []
+    
+    @State var isFetchingData: Bool = true
+    
     var body: some View {
-        VStack{
-            HStack{
-                Spacer()
-                
+        NavigationStack{
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVStack{
+                    if isFetchingData {
+                        ProgressView()
+                            .padding(.top, 25)
+                    } else {
+                        if recentJobs.isEmpty {
+                            Text("No New Jobs Found")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                .padding(.top, 20)
+                        }else {
+                            Jobs()
+                        }
+                    }
+                }
+                .padding(20)
+            }
+            .frame(maxHeight: .infinity,alignment: .center)
+            .frame(maxWidth: .infinity,alignment: .center)
+            .overlay(alignment: .bottomTrailing) {
                 Button{
                     createNewJob.toggle()
                 } label: {
@@ -21,21 +44,69 @@ struct JobsView: View {
                         .foregroundColor(.white)
                         .font(.title3)
                         .fontWeight(.bold)
-                        .padding(5)
+                        .padding(10)
                         .background(.black, in: Circle())
                 }
-                .padding(2)
+                .padding(20)
             }
-            .padding(.horizontal)
-            
-            Divider()
+            .navigationTitle("Jobs")
+            .refreshable {
+                isFetchingData = true
+                recentJobs = []
+                await fetchJobs()
+            }
+            .task {
+                guard recentJobs.isEmpty else{return}
+                await fetchJobs()
+            }
         }
-        .frame(maxHeight: .infinity,alignment: .top)
         .fullScreenCover(isPresented: $createNewJob) {
             CreateJobView()
         }
+        .onChange(of: createNewJob){newValue in
+            Task{
+                isFetchingData = true
+                recentJobs = []
+                await fetchJobs()
+            }
+            
+        }
     }
     
+    @ViewBuilder
+    func Jobs() -> some View {
+        ForEach(recentJobs) {job in
+            JobCardView(job: job, onDelete: {
+                withAnimation(.easeOut(duration: 0.3)){
+                    recentJobs.removeAll{job.id == $0.id}
+                }
+            })
+            
+            Divider()
+                .padding(.horizontal, -20)
+        }
+    }
+    
+    func fetchJobs() async {
+        do {
+            var query: Query!
+            query = Firestore.firestore().collection("Jobs")
+                .order(by: "createdDate", descending: true)
+                .limit(to: 10)
+            
+            let docs = try await query.getDocuments()
+            let fetchedJobs = docs.documents.compactMap {doc -> Job? in
+                try? doc.data(as: Job.self)
+            }
+            
+            await MainActor.run(body: {
+                recentJobs = fetchedJobs
+                isFetchingData = false
+            })
+        }catch {
+            print(error.localizedDescription)
+        }
+    }
 }
 
 struct JobsView_Previews: PreviewProvider {

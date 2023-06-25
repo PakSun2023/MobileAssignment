@@ -11,8 +11,6 @@ import FirebaseStorage
 import PhotosUI
 
 struct CreateJobView: View {
-    //    var onCreate: (Job) -> ()
-    
     @State var jobTitle: String = ""
     @State var jobDescriptioon: String = ""
     @State var jobImagesData: [Data] = []
