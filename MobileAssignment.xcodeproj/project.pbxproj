@@ -52,6 +52,9 @@
 		ABD36AD82A4771380060325C /* JobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AD72A4771380060325C /* JobsView.swift */; };
 		ABD36AD92A4771380060325C /* JobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AD72A4771380060325C /* JobsView.swift */; };
 		ABD36ADA2A4771380060325C /* JobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AD72A4771380060325C /* JobsView.swift */; };
+		ABD36ADC2A4812850060325C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ADB2A4812840060325C /* ImagePicker.swift */; };
+		ABD36ADD2A4812850060325C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ADB2A4812840060325C /* ImagePicker.swift */; };
+		ABD36ADE2A4812850060325C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36ADB2A4812840060325C /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,7 @@
 		ABD36ACD2A47464A0060325C /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		ABD36AD12A4748780060325C /* CreateJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateJobView.swift; sourceTree = "<group>"; };
 		ABD36AD72A4771380060325C /* JobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsView.swift; sourceTree = "<group>"; };
+		ABD36ADB2A4812840060325C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,7 @@
 				AB520F112A3F665A00C9923C /* MainView */,
 				AB520EF82A3F2DCA00C9923C /* AuthView.swift */,
 				AB520F082A3F5BB400C9923C /* LoadingView.swift */,
+				ABD36ADB2A4812840060325C /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				ABD36AD22A4748780060325C /* CreateJobView.swift in Sources */,
 				AB520F092A3F5BB400C9923C /* LoadingView.swift in Sources */,
 				ABD36AD82A4771380060325C /* JobsView.swift in Sources */,
+				ABD36ADC2A4812850060325C /* ImagePicker.swift in Sources */,
 				AB520F132A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520EF92A3F2DCA00C9923C /* AuthView.swift in Sources */,
 			);
@@ -395,6 +401,7 @@
 				AB520ED42A3F2C8000C9923C /* MobileAssignmentTests.swift in Sources */,
 				AB520F0E2A3F649B00C9923C /* MainView.swift in Sources */,
 				ABD36AD92A4771380060325C /* JobsView.swift in Sources */,
+				ABD36ADD2A4812850060325C /* ImagePicker.swift in Sources */,
 				AB520F142A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520F062A3F540800C9923C /* User.swift in Sources */,
 				ABD36ACF2A47464A0060325C /* Job.swift in Sources */,
@@ -414,6 +421,7 @@
 				ABD36AD42A4748780060325C /* CreateJobView.swift in Sources */,
 				AB520F0B2A3F5BB400C9923C /* LoadingView.swift in Sources */,
 				ABD36ADA2A4771380060325C /* JobsView.swift in Sources */,
+				ABD36ADE2A4812850060325C /* ImagePicker.swift in Sources */,
 				AB520F152A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520EFB2A3F2DCA00C9923C /* AuthView.swift in Sources */,
 			);
@@ -557,8 +565,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileAssignment/Preview Content\"";
+				DEVELOPMENT_TEAM = 27VJS637D7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Application needs access to your camera to take photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -585,8 +595,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MobileAssignment/Preview Content\"";
+				DEVELOPMENT_TEAM = 27VJS637D7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Application needs access to your camera to take photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

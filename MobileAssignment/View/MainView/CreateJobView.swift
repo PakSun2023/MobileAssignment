@@ -24,6 +24,9 @@ struct CreateJobView: View {
     @State var imageItem: PhotosPickerItem?
     @FocusState var showKB: Bool
     
+    @State private var cameraImage = UIImage()
+    @State private var showSheet: Bool = false
+    
     @Environment(\.dismiss) var dismiss
     
     @AppStorage("is_login") var is_login: Bool = false
@@ -110,6 +113,15 @@ struct CreateJobView: View {
                     Image(systemName: "photo.on.rectangle")
                         .font(.body)
                 }
+                //                .frame(maxWidth: .infinity,alignment: .leading)
+                
+                Button{
+                    showSheet.toggle()
+                } label: {
+                    Image(systemName: "camera")
+                        .font(.body)
+                }
+                .padding(.horizontal, 20)
                 .frame(maxWidth: .infinity,alignment: .leading)
                 
                 Button("Done"){
@@ -139,10 +151,19 @@ struct CreateJobView: View {
                 }
             }
         }
+        .sheet(isPresented: $showSheet) {
+            ImagePicker(sourceType: .camera, selectedImage: self.$cameraImage)
+        }
+        .onChange(of: cameraImage) { newData in
+            if let compressedImageData = newData.jpegData(compressionQuality: 0.5) {
+                jobImagesData.append(compressedImageData)
+            }
+        }
         .alert(errorMsg, isPresented: $showError, actions: {})
         .overlay{
             LoadingView(show: $isLoading)
         }
+        
     }
     
     func createJob() {
