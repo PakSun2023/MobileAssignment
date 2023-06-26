@@ -14,6 +14,8 @@ struct JobsView: View {
     
     @State var isFetchingData: Bool = true
     
+    @State var chatAboutJob: Bool = false
+    
     var body: some View {
         NavigationStack{
             ScrollView(.vertical, showsIndicators: false) {

@@ -13,6 +13,9 @@ struct JobCardView: View {
     var job: Job
     var onDelete: () -> ()
     
+    @State var showChatView: Bool = false
+    
+    @AppStorage("chat_id") var chat_id: String = ""
     @AppStorage("user_UID") var user_UID: String = ""
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -56,7 +59,7 @@ struct JobCardView: View {
                 .offset(x: 8)
             } else {
                 Button{
-                    
+                    handleChat()
                 } label: {
                     Image(systemName: "message")
                         .font(.body)
@@ -64,6 +67,9 @@ struct JobCardView: View {
             }
         })
         .padding(.horizontal, 10)
+        .fullScreenCover(isPresented: $showChatView) {
+            ChatView()
+        }
     }
     
     func deleteJob(){
@@ -72,6 +78,39 @@ struct JobCardView: View {
                 guard let jobID = job.id else{return}
                 try await Firestore.firestore().collection("Jobs").document(jobID).delete()
                 onDelete()
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func handleChat() {
+        Task{
+            do{
+                guard let jobID = job.id else{return}
+                let jobOwnerID = job.userUID
+                guard let userUID = Auth.auth().currentUser?.uid else{return}
+                
+                var query: Query!
+                query = Firestore.firestore().collection("Chats")
+                    .whereField("jobId", isEqualTo: jobID)
+                    .whereField("jobRequest", isEqualTo: userUID)
+                
+                let docs = try await query.getDocuments()
+                
+                if docs.isEmpty {
+                    let newChatData = ["jobId": jobID, "jobOwner": jobOwnerID, "jobRequest": userUID]
+                    
+                    let newChat = try Firestore.firestore().collection("Chats").addDocument(from: newChatData)
+                    
+                    chat_id = newChat.documentID
+                } else {
+                    chat_id = docs.documents[0].documentID
+                }
+                
+                if chat_id != "" {
+                    showChatView = true
+                }
             }catch{
                 print(error.localizedDescription)
             }
