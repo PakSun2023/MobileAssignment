@@ -11,11 +11,39 @@ import Firebase
 
 class ChatViewModel: ObservableObject {
     @Published var chatText = ""
+    @Published var chatID = ""
+    
+    @Published var chatMessages = [ChatMessage]()
+    
     init() {
-        
+        if chatID != "" {
+            fetchMessages()
+        }
     }
     
-    func onSend(chatID: String) {
+    func fetchMessages() {
+        print(chatID)
+        print("fetching messages")
+        Firestore.firestore().collection("Chats").document(chatID).collection("messages").order(by: "timestamp")
+            .addSnapshotListener {querySnapshot, error in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                querySnapshot?.documentChanges.forEach({ change in
+                    if change.type == .added {
+                        do {
+                            let chatMsg = try change.document.data(as: ChatMessage.self)
+                            self.chatMessages.append(chatMsg)
+                        } catch {
+                            print(error)
+                        }
+                    }
+                })}
+    }
+    
+    func onSend() {
         guard let userUID = Auth.auth().currentUser?.uid else{return}
         
         let messageData = ["fromId": userUID, "text": self.chatText, "timestamp": Timestamp()] as [String : Any]
@@ -49,6 +77,7 @@ struct ChatView: View {
     @State var jobInfo: Job?
     
     @AppStorage("chat_id") var chat_id: String = ""
+    @AppStorage("user_UID") var user_UID: String = ""
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack{
@@ -79,20 +108,36 @@ struct ChatView: View {
             Divider()
             
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 10) {
-                    ForEach(0..<10) { num in
-                        HStack {
-                            Spacer()
-                            
+                VStack(spacing: 5) {
+                    ForEach(vm.chatMessages) { message in
+                        if message.fromId == user_UID {
                             HStack {
+                                Spacer()
                                 
-                                Text("fake message")
-                                    .foregroundColor(.white)
+                                HStack {
+                                    
+                                    Text(message.text)
+                                        .foregroundColor(.white)
+                                }
+                                .padding()
+                                .background(Color.blue)
+                                .cornerRadius(8)
                             }
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(8)
+                        } else {
+                            HStack {
+                                HStack {
+                                    
+                                    Text(message.text)
+                                        .foregroundColor(.white)
+                                }
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(8)
+                                
+                                Spacer()
+                            }
                         }
+                        
                     }
                     .padding(.horizontal)
                 }
@@ -120,7 +165,7 @@ struct ChatView: View {
                 
                 Button{
                     showKB = false
-                    vm.onSend(chatID: self.chat_id)
+                    vm.onSend()
                 } label: {
                     Image(systemName: "paperplane.circle.fill")
                         .font(.title2)
@@ -134,7 +179,11 @@ struct ChatView: View {
         })
         .alert(errorMsg, isPresented: $showError, actions: {})
         .task {
+            vm.chatID = self.chat_id
             fetchChatData()
+        }
+        .onChange(of: vm.chatID) { change in
+            vm.fetchMessages()
         }
     }
     

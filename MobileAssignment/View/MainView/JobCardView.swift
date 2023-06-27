@@ -61,7 +61,7 @@ struct JobCardView: View {
                 Button{
                     handleChat()
                 } label: {
-                    Image(systemName: "message")
+                    Image(systemName: "plus.message")
                         .font(.body)
                 }
             }

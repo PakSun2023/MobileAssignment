@@ -52,6 +52,16 @@ struct JobsView: View {
                 .padding(20)
             }
             .navigationTitle("Jobs")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "message.circle")
+                            .font(.title2)
+                    }
+                }
+            }
             .refreshable {
                 isFetchingData = true
                 recentJobs = []
