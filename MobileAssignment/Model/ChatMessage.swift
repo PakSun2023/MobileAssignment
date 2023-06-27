@@ -12,12 +12,14 @@ struct ChatMessage: Identifiable, Codable {
     @DocumentID var id: String?
     var fromId: String
     var text: String
-    var timestamp: Date
+    var audioURL: URL?
+    var timestamp: Date = Date()
     
     enum CodingKeys: CodingKey {
         case id
         case fromId
         case text
+        case audioURL
         case timestamp
     }
 }

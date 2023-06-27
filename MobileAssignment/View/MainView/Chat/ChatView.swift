@@ -8,6 +8,9 @@
 import SwiftUI
 import PhotosUI
 import Firebase
+import FirebaseStorage
+import AVFoundation
+import AVFAudio
 
 class ChatViewModel: ObservableObject {
     @Published var chatText = ""
@@ -75,6 +78,10 @@ struct ChatView: View {
     @ObservedObject var vm = ChatViewModel()
     
     @State var jobInfo: Job?
+    @State var chatInfo: Chat?
+    
+    @State private var playSound: Bool = false
+    @StateObject private var soundManager = SoundManager()
     
     @AppStorage("chat_id") var chat_id: String = ""
     @AppStorage("user_UID") var user_UID: String = ""
@@ -115,9 +122,24 @@ struct ChatView: View {
                                 Spacer()
                                 
                                 HStack {
+                                    if message.audioURL != nil {
+                                        Image(systemName: playSound ? "pause.circle.fill": "play.circle.fill")
+                                            .foregroundColor(.white)
+                                            .onTapGesture {
+                                                soundManager.playSound(sound: message.audioURL!.path)
+                                                playSound.toggle()
+                                                
+                                                if playSound{
+                                                    soundManager.audioPlayer?.play()
+                                                } else {
+                                                    soundManager.audioPlayer?.pause()
+                                                }
+                                            }
+                                    } else {
+                                        Text(message.text)
+                                            .foregroundColor(.white)
+                                    }
                                     
-                                    Text(message.text)
-                                        .foregroundColor(.white)
                                 }
                                 .padding()
                                 .background(Color.blue)
@@ -126,9 +148,23 @@ struct ChatView: View {
                         } else {
                             HStack {
                                 HStack {
-                                    
-                                    Text(message.text)
-                                        .foregroundColor(.white)
+                                    if message.audioURL != nil {
+                                        Image(systemName: playSound ? "pause.circle.fill": "play.circle.fill")
+                                            .foregroundColor(.white)
+                                            .onTapGesture {
+                                                soundManager.playSound(sound: message.audioURL!.path)
+                                                playSound.toggle()
+                                                
+                                                if playSound{
+                                                    soundManager.audioPlayer?.play()
+                                                } else {
+                                                    soundManager.audioPlayer?.pause()
+                                                }
+                                            }
+                                    } else {
+                                        Text(message.text)
+                                            .foregroundColor(.white)
+                                    }
                                 }
                                 .padding()
                                 .background(Color.white)
@@ -156,7 +192,7 @@ struct ChatView: View {
                 Button{
                     showSheet.toggle()
                 } label: {
-                    Image(systemName: "camera")
+                    Image(systemName: "mic")
                         .font(.body)
                 }
                 .padding(.horizontal, 5)
@@ -174,6 +210,41 @@ struct ChatView: View {
             .padding(10)
         }
         .frame(maxHeight: .infinity,alignment: .top)
+        .sheet(isPresented: $showSheet) {
+            AudioView(chat: chatInfo!, sendAudio: {
+                let file_path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first?.appending("/record2023.wav")
+                print("sending audio")
+                
+                let localFile = URL(fileURLWithPath: file_path!)
+                let referenceId = "\(user_UID)\(Date())"
+                let storageRef = Storage.storage().reference().child("Chat_Audio").child(referenceId)
+                
+                // Upload the file to the path "images/rivers.jpg"
+                let uploadTask = storageRef.putFile(from: localFile, metadata: nil) { metadata, error in
+                    guard let metadata = metadata else {
+                        return
+                    }
+                    // Metadata contains file metadata such as size, content-type.
+                    let size = metadata.size
+                    // You can also access to download URL after upload.
+                    storageRef.downloadURL { (url, error) in
+                        guard let downloadURL = url else {return}
+                        
+                        let messageData = ChatMessage(fromId: user_UID, text: "", audioURL: downloadURL)
+                        
+                        let document = try? Firestore.firestore().collection("Chats").document(chat_id).collection("messages").addDocument(from: messageData, completion: {
+                            error in
+                            if error == nil {
+                                isLoading = false
+                                dismiss()
+                            }
+                        })
+                    }
+                }
+                
+                showSheet = false
+            } )
+        }
         .overlay(content: {
             LoadingView(show: $isLoading)
         })
@@ -187,6 +258,16 @@ struct ChatView: View {
         }
     }
     
+    class SoundManager : ObservableObject {
+        var audioPlayer: AVPlayer?
+        
+        func playSound(sound: String){
+            if let url = URL(string: sound) {
+                self.audioPlayer = AVPlayer(url: url)
+            }
+        }
+    }
+    
     func fetchChatData(){
         Task{
             do{
@@ -196,6 +277,7 @@ struct ChatView: View {
                 
                 
                 await MainActor.run(body: {
+                    chatInfo = chat
                     jobInfo = job
                     isLoading = false
                 })

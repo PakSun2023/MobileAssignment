@@ -73,6 +73,9 @@
 		ABD36AF62A4AB95B0060325C /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AF32A4AB95A0060325C /* ChatListView.swift */; };
 		ABD36AF92A4AE21B0060325C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = ABD36AF82A4AE21B0060325C /* GoogleSignIn */; };
 		ABD36AFB2A4AE21B0060325C /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ABD36AFA2A4AE21B0060325C /* GoogleSignInSwift */; };
+		ABD36AFE2A4AF68A0060325C /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AFD2A4AF68A0060325C /* AudioView.swift */; };
+		ABD36AFF2A4AF68A0060325C /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AFD2A4AF68A0060325C /* AudioView.swift */; };
+		ABD36B002A4AF68A0060325C /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AFD2A4AF68A0060325C /* AudioView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +124,7 @@
 		ABD36AEF2A4AAE480060325C /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		ABD36AF32A4AB95A0060325C /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		ABD36AFC2A4AE2900060325C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		ABD36AFD2A4AF68A0060325C /* AudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +270,7 @@
 			children = (
 				ABD36AE72A4A0B390060325C /* ChatView.swift */,
 				ABD36AF32A4AB95A0060325C /* ChatListView.swift */,
+				ABD36AFD2A4AF68A0060325C /* AudioView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 				ABD36AD82A4771380060325C /* JobsView.swift in Sources */,
 				ABD36ADC2A4812850060325C /* ImagePicker.swift in Sources */,
 				ABD36AE02A4834DF0060325C /* JobCardView.swift in Sources */,
+				ABD36AFE2A4AF68A0060325C /* AudioView.swift in Sources */,
 				AB520F132A3F668500C9923C /* ProfileView.swift in Sources */,
 				ABD36AEC2A4A2E8D0060325C /* Chat.swift in Sources */,
 				AB520EF92A3F2DCA00C9923C /* AuthView.swift in Sources */,
@@ -460,6 +466,7 @@
 				ABD36AE12A4834DF0060325C /* JobCardView.swift in Sources */,
 				AB520F142A3F668500C9923C /* ProfileView.swift in Sources */,
 				AB520F062A3F540800C9923C /* User.swift in Sources */,
+				ABD36AFF2A4AF68A0060325C /* AudioView.swift in Sources */,
 				ABD36ACF2A47464A0060325C /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +488,7 @@
 				ABD36ADA2A4771380060325C /* JobsView.swift in Sources */,
 				ABD36ADE2A4812850060325C /* ImagePicker.swift in Sources */,
 				ABD36AE22A4834DF0060325C /* JobCardView.swift in Sources */,
+				ABD36B002A4AF68A0060325C /* AudioView.swift in Sources */,
 				AB520F152A3F668500C9923C /* ProfileView.swift in Sources */,
 				ABD36AEE2A4A2E8D0060325C /* Chat.swift in Sources */,
 				AB520EFB2A3F2DCA00C9923C /* AuthView.swift in Sources */,
@@ -631,6 +639,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MobileAssignment/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Application needs access to your camera to take photos";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Application needs access to your microphone to record audio";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -662,6 +671,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MobileAssignment/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Application needs access to your camera to take photos";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Application needs access to your microphone to record audio";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
