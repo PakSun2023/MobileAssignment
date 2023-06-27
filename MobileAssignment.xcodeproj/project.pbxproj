@@ -71,6 +71,8 @@
 		ABD36AF42A4AB95A0060325C /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AF32A4AB95A0060325C /* ChatListView.swift */; };
 		ABD36AF52A4AB95A0060325C /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AF32A4AB95A0060325C /* ChatListView.swift */; };
 		ABD36AF62A4AB95B0060325C /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD36AF32A4AB95A0060325C /* ChatListView.swift */; };
+		ABD36AF92A4AE21B0060325C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = ABD36AF82A4AE21B0060325C /* GoogleSignIn */; };
+		ABD36AFB2A4AE21B0060325C /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ABD36AFA2A4AE21B0060325C /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,7 @@
 		ABD36AEB2A4A2E8D0060325C /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		ABD36AEF2A4AAE480060325C /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		ABD36AF32A4AB95A0060325C /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		ABD36AFC2A4AE2900060325C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +131,11 @@
 				ABD36AE52A4835920060325C /* SDWebImageSwiftUI in Frameworks */,
 				AB520EF22A3F2DA100C9923C /* FirebaseAuth in Frameworks */,
 				AB520EF42A3F2DA100C9923C /* FirebaseFirestore in Frameworks */,
+				ABD36AFB2A4AE21B0060325C /* GoogleSignInSwift in Frameworks */,
 				AB520EFE2A3F306900C9923C /* FirebaseDatabase in Frameworks */,
 				ABD36AD62A474CEE0060325C /* FirebaseStorage in Frameworks */,
 				AB520EF62A3F2DA100C9923C /* FirebaseFirestoreSwift in Frameworks */,
+				ABD36AF92A4AE21B0060325C /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +180,7 @@
 		AB520EC12A3F2C7F00C9923C /* MobileAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				ABD36AFC2A4AE2900060325C /* Info.plist */,
 				AB520F1A2A3F794C00C9923C /* GoogleService-Info.plist */,
 				AB520EFF2A3F53C100C9923C /* Model */,
 				AB520EF72A3F2DB100C9923C /* View */,
@@ -287,6 +293,8 @@
 				AB520EFD2A3F306900C9923C /* FirebaseDatabase */,
 				ABD36AD52A474CEE0060325C /* FirebaseStorage */,
 				ABD36AE42A4835920060325C /* SDWebImageSwiftUI */,
+				ABD36AF82A4AE21B0060325C /* GoogleSignIn */,
+				ABD36AFA2A4AE21B0060325C /* GoogleSignInSwift */,
 			);
 			productName = MobileAssignment;
 			productReference = AB520EBF2A3F2C7F00C9923C /* MobileAssignment.app */;
@@ -363,6 +371,7 @@
 			packageReferences = (
 				AB520EF02A3F2DA100C9923C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				ABD36AE32A4835920060325C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				ABD36AF72A4AE21B0060325C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = AB520EC02A3F2C7F00C9923C /* Products */;
 			projectDirPath = "";
@@ -620,6 +629,7 @@
 				DEVELOPMENT_TEAM = 27VJS637D7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MobileAssignment/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Application needs access to your camera to take photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -650,6 +660,7 @@
 				DEVELOPMENT_TEAM = 27VJS637D7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MobileAssignment/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Application needs access to your camera to take photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -799,6 +810,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		ABD36AF72A4AE21B0060325C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -831,6 +850,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ABD36AE32A4835920060325C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		ABD36AF82A4AE21B0060325C /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABD36AF72A4AE21B0060325C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		ABD36AFA2A4AE21B0060325C /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABD36AF72A4AE21B0060325C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

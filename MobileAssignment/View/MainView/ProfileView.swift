@@ -14,7 +14,7 @@ struct ProfileView: View {
     @State var isLoading: Bool = false
     @State var editProfile: Bool = false
     @State private var myProfile: User?
-    @AppStorage("is_login") var is_logiin: Bool = false
+    @AppStorage("is_login") var is_login: Bool = false
     
     @State var recentJobs: [Job] = []
     @State var isFetchingJobs: Bool = true
@@ -131,7 +131,7 @@ struct ProfileView: View {
     
     func userLogout () {
         try? Auth.auth().signOut()
-        is_logiin = false
+        is_login = false
     }
     
     func fetchUserInfo () async {
@@ -154,7 +154,7 @@ struct ProfileView: View {
             errorMsg = error.localizedDescription
             showError.toggle()
             isLoading = false
-            is_logiin = false
+            is_login = false
         })
     }
 }

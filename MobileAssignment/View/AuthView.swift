@@ -8,6 +8,8 @@
 import SwiftUI
 import Firebase
 import FirebaseFirestore
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct LoginView: View {
     @State var email: String = ""
@@ -97,6 +99,25 @@ struct LoginView: View {
                             .font(.callout)
                             .lineLimit(1)
                     }
+                    .overlay {
+                        if let clientID = FirebaseApp.app()?.options.clientID{
+                            
+                            GoogleSignInButton{
+                                let config = GIDConfiguration(clientID: clientID)
+                                GIDSignIn.sharedInstance.configuration = config
+                                GIDSignIn.sharedInstance.signIn(withPresenting: UIApplication.shared.rootController()) { signInResult, error in
+                                    if let error = error {
+                                        print(error.localizedDescription)
+                                        return
+                                    }
+                                    
+                                    loginWithGoogle(user: signInResult!.user)
+                                }
+                            }
+                            .blendMode(.overlay)
+                        }
+                        
+                    }
                     .foregroundColor(.white)
                     .padding(.horizontal,10)
                     .background{
@@ -131,7 +152,7 @@ struct LoginView: View {
     
     func userLogin(){
         isLoading = true
-        closeKB()
+        UIApplication.shared.closeKB()
         Task{
             do{
                 try await Auth.auth().signIn(withEmail: email, password: password)
@@ -160,6 +181,35 @@ struct LoginView: View {
             showError.toggle()
             isLoading = false
         })
+    }
+    
+    func loginWithGoogle(user: GIDGoogleUser) {
+        Task{
+            do{
+                guard let idToken = user.idToken else { return }
+                let googleCredential = GoogleAuthProvider.credential(
+                    withIDToken: idToken.tokenString,
+                    accessToken: user.accessToken.tokenString
+                )
+                
+                try await Auth.auth().signIn(with: googleCredential)
+                guard let userUID = Auth.auth().currentUser?.uid else{return}
+                
+                let userData = User(username: user.profile!.name, userUID: userUID, userEmail: user.profile!.email)
+                try Firestore.firestore().collection("Users").document(userUID).setData(from: userData, completion: {
+                    error in
+                    if error == nil {
+                        print("login with google success")
+                        is_login = true
+                        user_name = user.profile!.name
+                        user_email = user.profile!.email
+                        user_UID = userUID
+                    }
+                })
+            }catch {
+                await setError(error)
+            }
+        }
     }
 }
 
@@ -263,6 +313,25 @@ struct RegisterView: View {
                             .font(.callout)
                             .lineLimit(1)
                     }
+                    .overlay {
+                        if let clientID = FirebaseApp.app()?.options.clientID{
+                            
+                            GoogleSignInButton{
+                                let config = GIDConfiguration(clientID: clientID)
+                                GIDSignIn.sharedInstance.configuration = config
+                                GIDSignIn.sharedInstance.signIn(withPresenting: UIApplication.shared.rootController()) { signInResult, error in
+                                    if let error = error {
+                                        print(error.localizedDescription)
+                                        return
+                                    }
+                                    
+                                    loginWithGoogle(user: signInResult!.user)
+                                }
+                            }
+                            .blendMode(.overlay)
+                        }
+                        
+                    }
                     .foregroundColor(.white)
                     .padding(.horizontal,10)
                     .background{
@@ -294,7 +363,7 @@ struct RegisterView: View {
     
     func userRegister(){
         isLoading = true
-        closeKB()
+        UIApplication.shared.closeKB()
         Task{
             do{
                 try await Auth.auth().createUser(withEmail: email, password: password)
@@ -324,6 +393,35 @@ struct RegisterView: View {
             isLoading = false
         })
     }
+    
+    func loginWithGoogle(user: GIDGoogleUser) {
+        Task{
+            do{
+                guard let idToken = user.idToken else { return }
+                let googleCredential = GoogleAuthProvider.credential(
+                    withIDToken: idToken.tokenString,
+                    accessToken: user.accessToken.tokenString
+                )
+                
+                try await Auth.auth().signIn(with: googleCredential)
+                guard let userUID = Auth.auth().currentUser?.uid else{return}
+                
+                let userData = User(username: user.profile!.name, userUID: userUID, userEmail: user.profile!.email)
+                try Firestore.firestore().collection("Users").document(userUID).setData(from: userData, completion: {
+                    error in
+                    if error == nil {
+                        print("login with google success")
+                        is_login = true
+                        user_name = user.profile!.name
+                        user_email = user.profile!.email
+                        user_UID = userUID
+                    }
+                })
+            }catch {
+                await setError(error)
+            }
+        }
+    }
 }
 
 struct AuthView_Previews: PreviewProvider {
@@ -332,8 +430,15 @@ struct AuthView_Previews: PreviewProvider {
     }
 }
 
-extension View {
+extension UIApplication {
     func closeKB () {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
+    func rootController()->UIViewController{
+        guard let window = connectedScenes.first as? UIWindowScene else{return .init()}
+        guard let viewcontroller = window.windows.last?.rootViewController else{return .init()}
+        
+        return viewcontroller
     }
 }
