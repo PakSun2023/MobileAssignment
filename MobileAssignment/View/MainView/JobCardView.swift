@@ -92,7 +92,7 @@ struct JobCardView: View {
         Task{
             do{
                 guard let jobID = job.id else{return}
-                try await Firestore.firestore().collection("Jobs").document(jobID).updateData(["status": jobStatus.completed])
+                try await Firestore.firestore().collection("Jobs").document(jobID).updateData(["status": "completed"])
                 onDelete()
             }catch{
                 print(error.localizedDescription)

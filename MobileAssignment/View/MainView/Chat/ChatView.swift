@@ -145,7 +145,7 @@ struct ChatView: View {
                                 .background(Color.blue)
                                 .cornerRadius(8)
                             }
-                        } else {
+                        } else  {
                             HStack {
                                 HStack {
                                     if message.audioURL != nil {
@@ -167,7 +167,7 @@ struct ChatView: View {
                                     }
                                 }
                                 .padding()
-                                .background(Color.white)
+                                .background(Color.green)
                                 .cornerRadius(8)
                                 
                                 Spacer()

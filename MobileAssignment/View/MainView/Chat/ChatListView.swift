@@ -120,8 +120,18 @@ struct ChatListView: View {
                 try? doc.data(as: Chat.self)
             }
             
+            var query2: Query!
+            query2 = Firestore.firestore().collection("Chats")
+                .whereField("jobOwnerId", isEqualTo: self.user_UID)
+            
+            let docs2 = try await query2.getDocuments()
+            let fetchedChats2 = docs2.documents.compactMap {doc -> Chat? in
+                try? doc.data(as: Chat.self)
+            }
+            
             await MainActor.run(body: {
                 recentChats = fetchedChats
+                recentChats.append(contentsOf: fetchedChats2)
                 isLoading = false
             })
         }catch {
