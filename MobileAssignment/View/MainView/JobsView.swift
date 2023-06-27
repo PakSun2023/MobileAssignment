@@ -16,6 +16,8 @@ struct JobsView: View {
     
     @State var chatAboutJob: Bool = false
     
+    @State var showChatList: Bool = false
+    
     var body: some View {
         NavigationStack{
             ScrollView(.vertical, showsIndicators: false) {
@@ -55,7 +57,7 @@ struct JobsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        
+                        showChatList = true
                     } label: {
                         Image(systemName: "message.circle")
                             .font(.title2)
@@ -74,6 +76,9 @@ struct JobsView: View {
         }
         .fullScreenCover(isPresented: $createNewJob) {
             CreateJobView()
+        }
+        .fullScreenCover(isPresented: $showChatList) {
+            ChatListView()
         }
         .onChange(of: createNewJob){newValue in
             Task{
@@ -103,6 +108,7 @@ struct JobsView: View {
         do {
             var query: Query!
             query = Firestore.firestore().collection("Jobs")
+                .whereField("status", isEqualTo: "open")
                 .order(by: "createdDate", descending: true)
                 .limit(to: 10)
             

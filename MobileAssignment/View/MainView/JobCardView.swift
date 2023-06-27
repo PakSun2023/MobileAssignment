@@ -17,6 +17,7 @@ struct JobCardView: View {
     
     @AppStorage("chat_id") var chat_id: String = ""
     @AppStorage("user_UID") var user_UID: String = ""
+    @AppStorage("user_name") var user_name: String = ""
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(job.title)
@@ -48,6 +49,9 @@ struct JobCardView: View {
             if job.userUID == user_UID {
                 Menu{
                     Button("Delete", role: .destructive, action: deleteJob)
+                    if job.status != jobStatus.completed {
+                        Button("Completed", role: .none, action: completeJob)
+                    }
                 } label: {
                     Image(systemName: "ellipsis")
                         .font(.caption)
@@ -84,22 +88,36 @@ struct JobCardView: View {
         }
     }
     
+    func completeJob(){
+        Task{
+            do{
+                guard let jobID = job.id else{return}
+                try await Firestore.firestore().collection("Jobs").document(jobID).updateData(["status": jobStatus.completed])
+                onDelete()
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func handleChat() {
         Task{
             do{
                 guard let jobID = job.id else{return}
+                let jobName = job.title
                 let jobOwnerID = job.userUID
+                let jobOwnerName = job.username
                 guard let userUID = Auth.auth().currentUser?.uid else{return}
                 
                 var query: Query!
                 query = Firestore.firestore().collection("Chats")
                     .whereField("jobId", isEqualTo: jobID)
-                    .whereField("jobRequest", isEqualTo: userUID)
+                    .whereField("jobRequestId", isEqualTo: userUID)
                 
                 let docs = try await query.getDocuments()
                 
                 if docs.isEmpty {
-                    let newChatData = ["jobId": jobID, "jobOwner": jobOwnerID, "jobRequest": userUID]
+                    let newChatData = ["jobId": jobID, "jobTitle": jobName, "jobOwnerId": jobOwnerID, "jobOwner": jobOwnerName, "jobRequestId": userUID, "jobRequest": self.user_name]
                     
                     let newChat = try Firestore.firestore().collection("Chats").addDocument(from: newChatData)
                     
